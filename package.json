@@ -14,11 +14,12 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@vitejs/plugin-react": "latest",
     "antd": "^5.12.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "vite": "latest",
-    "@vitejs/plugin-react": "latest"
+    "vite": "latest"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
