@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-import reactLogo from './assets/react.svg';
+import reactLogo from './assets/react.svg'
 
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
     <>
       <div>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+          Ссылка на что-то
         </a>
         <a href="https://react.dev" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
@@ -20,7 +19,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>puk is {count}</button>
+        <button onClick={() => setCount((prevCount) => prevCount + 1)}>puk is {count}</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

@@ -40,7 +40,8 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": 0,
     "import/no-unresolved": [2, { "caseSensitive": false }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    'import/extensions': ['error', 'ignorePackages', { 'ts': 'never', 'js': 'never', 'jsx': 'never' }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
     "import/order": [
       2,
       {

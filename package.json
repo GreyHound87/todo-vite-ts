@@ -9,14 +9,16 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint --fix .",
     "preview": "vite preview",
-    "format": "prettier --write 'src/**/*.js' 'src/**/*.ts' 'src/**/*.tsx'",
-    "check-format": "prettier --check 'src/**/*.js' 'src/**/*.ts' 'src/**/*.tsx'",
+    "format": "prettier --write src/**/*.js src/**/*.ts src/**/*.tsx",
+    "check-format": "prettier --check src/**/*.js src/**/*.ts src/**/*.tsx",
     "lint-staged": "lint-staged"
   },
   "dependencies": {
     "antd": "^5.12.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite": "latest",
+    "@vitejs/plugin-react": "latest"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
