@@ -15,12 +15,13 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@reduxjs/toolkit": "^2.0.1",
+    "@types/react-redux": "^7.1.33",
     "@vitejs/plugin-react": "latest",
     "antd": "^5.12.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
-    "redux": "^5.0.1",
     "vite": "latest"
   },
   "devDependencies": {
