@@ -5,7 +5,7 @@ import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit'
 export interface Task {
   label: string
   created: string
-  timer: number
+  timer: number | null
   id: string
   isCompleted: boolean
   isEditing: boolean
@@ -20,7 +20,7 @@ const initialState: TasksState = {
     {
       label: 'Сделать покупки',
       created: '2024-01-01',
-      timer: 0,
+      timer: null,
       id: '1',
       isCompleted: false,
       isEditing: false,
@@ -28,7 +28,7 @@ const initialState: TasksState = {
     {
       label: 'Подготовить презентацию',
       created: '2024-01-02',
-      timer: 0,
+      timer: null,
       id: '2',
       isCompleted: false,
       isEditing: false,
@@ -36,7 +36,7 @@ const initialState: TasksState = {
     {
       label: 'Записаться на курс',
       created: '2024-01-03',
-      timer: 0,
+      timer: null,
       id: '3',
       isCompleted: false,
       isEditing: false,
