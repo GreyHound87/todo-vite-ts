@@ -10,6 +10,14 @@ function TodoApp() {
   const dispatch = useDispatch()
   const tasks: Task[] = useSelector((state: TasksState) => state.tasks)
 
+  const titleStyle = {
+    fontSize: '80px',
+    lineHeight: '1.2',
+    fontWeight: 400,
+    color: '#cdcdcd',
+    textAlign: 'center',
+  }
+
   const onFinish = (values: { task: string }) => {
     const newTask: Task = {
       label: values.task,
@@ -28,8 +36,10 @@ function TodoApp() {
   }
 
   return (
-    <div>
-      <Typography.Title level={1}>TODO</Typography.Title>
+    <>
+      <Typography.Title level={1} style={titleStyle}>
+        TODO
+      </Typography.Title>
 
       <Form form={form} onFinish={onFinish} layout="horizontal">
         <Form.Item label="New Task" name="task" rules={[{ required: true, message: 'Please enter a task!' }]}>
@@ -54,7 +64,7 @@ function TodoApp() {
           </List.Item>
         )}
       />
-    </div>
+    </>
   )
 }
 
