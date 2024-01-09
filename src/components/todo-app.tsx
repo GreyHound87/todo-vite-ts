@@ -3,20 +3,28 @@ import { Typography, Form, Input, Button, Space, List, Checkbox } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { TasksState, addTask, toggleTask } from '../redux/store'
+import { Task, TasksState, addTask, toggleTask } from '../redux/store'
 
 function TodoApp() {
   const [form] = Form.useForm()
   const dispatch = useDispatch()
-  const tasks: string[] = useSelector((state: TasksState) => state.tasks)
+  const tasks: Task[] = useSelector((state: TasksState) => state.tasks)
 
   const onFinish = (values: { task: string }) => {
-    dispatch(addTask(values.task))
+    const newTask: Task = {
+      label: values.task,
+      created: new Date().toISOString(),
+      timer: 0,
+      id: Math.random().toString(),
+      isCompleted: false,
+      isEditing: false,
+    }
+    dispatch(addTask(newTask))
     form.resetFields()
   }
 
-  const onTaskToggle = (index: number) => {
-    dispatch(toggleTask(index))
+  const onTaskToggle = (taskId: string) => {
+    dispatch(toggleTask(taskId))
   }
 
   return (
@@ -37,11 +45,11 @@ function TodoApp() {
 
       <List
         dataSource={tasks}
-        renderItem={(task, index) => (
+        renderItem={(task) => (
           <List.Item>
             <Space>
-              <Checkbox onChange={() => onTaskToggle(index)} />
-              <span>{task}</span>
+              <Checkbox onChange={() => onTaskToggle(task.id)} checked={task.isCompleted} />
+              <span>{task.label}</span>
             </Space>
           </List.Item>
         )}
