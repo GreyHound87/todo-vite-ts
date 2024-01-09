@@ -9,7 +9,7 @@ import { RootState, addTask, toggleTask } from '../redux/store'
 function TodoApp() {
   const [form] = Form.useForm()
   const dispatch = useDispatch()
-  const tasks = useSelector((state: RootState) => state.tasks.tasks)
+  const tasks = useSelector((state: RootState) => state.tasks)
 
   const onFinish = (values: { task: string }) => {
     dispatch(addTask(values.task))
@@ -18,7 +18,7 @@ function TodoApp() {
   }
 
   useEffect(() => {
-    console.log('Tasks changed:', tasks)
+    console.log('Tasks:', tasks) // tasks всегда unefined
   }, [tasks])
 
   const onTaskToggle = (index: number) => {

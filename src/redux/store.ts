@@ -11,7 +11,7 @@ export interface RootState {
 }
 
 const initialState: TasksState = {
-  tasks: [],
+  tasks: ['Сделать покупки', 'Подготовить презентацию', 'Записаться на курс'],
 }
 
 const tasksSlice = createSlice({
@@ -23,8 +23,9 @@ const tasksSlice = createSlice({
     },
     toggleTask: (state, action: PayloadAction<number>) => {
       const index = action.payload
-      state.tasks[index] = `✅ ${state.tasks[index]}`
-      return { ...state }
+      const updatedTasks = [...state.tasks]
+      updatedTasks[index] = `✅ ${updatedTasks[index]}`
+      return { ...state, tasks: updatedTasks }
     },
   },
 })
