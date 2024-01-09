@@ -1,25 +1,19 @@
 // src/components/TodoApp.tsx
-import { useEffect } from 'react'
 import { Typography, Form, Input, Button, Space, List, Checkbox } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { RootState, addTask, toggleTask } from '../redux/store'
+import { TasksState, addTask, toggleTask } from '../redux/store'
 
 function TodoApp() {
   const [form] = Form.useForm()
   const dispatch = useDispatch()
-  const tasks = useSelector((state: RootState) => state.tasks)
+  const tasks: string[] = useSelector((state: TasksState) => state.tasks)
 
   const onFinish = (values: { task: string }) => {
     dispatch(addTask(values.task))
-    console.log(tasks) // tasks всегда unefined
     form.resetFields()
   }
-
-  useEffect(() => {
-    console.log('Tasks:', tasks) // tasks всегда unefined
-  }, [tasks])
 
   const onTaskToggle = (index: number) => {
     dispatch(toggleTask(index))

@@ -2,12 +2,8 @@
 
 import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit'
 
-interface TasksState {
+export interface TasksState {
   tasks: string[]
-}
-
-export interface RootState {
-  tasks: TasksState
 }
 
 const initialState: TasksState = {
