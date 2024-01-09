@@ -1,5 +1,5 @@
 // src/components/TodoApp.tsx
-import { Typography, Form, Input, Button, Space, List, Checkbox } from 'antd'
+import { Typography, Form, Input, Button, Space, List, Checkbox, Flex } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -38,19 +38,26 @@ function TodoApp() {
         TODO
       </Typography.Title>
 
-      <Form form={form} onFinish={onFinish} layout="horizontal">
-        <Form.Item label="New Task" name="task" rules={[{ required: true, message: 'Please enter a task!' }]}>
-          <Input />
-        </Form.Item>
-        {window.innerWidth < 768 && (
-          <Form.Item>
-            <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
-              Add Task
-            </Button>
+      <Form form={form} onFinish={onFinish} layout="horizontal" requiredMark={false}>
+        <Flex justify="space-between" align="center" gap="small">
+          <Form.Item
+            name="task"
+            style={{ width: '100%' }}
+            rules={[{ required: true, message: 'Please enter a task!' }]}
+          >
+            <Input placeholder="Task" />
           </Form.Item>
-        )}
-        <Form.Item label="Timer" name="timer">
-          <Input placeholder="Optional: Timer" type="number" />
+          {window.innerWidth < 768 && (
+            <Form.Item>
+              <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
+                Add Task
+              </Button>
+            </Form.Item>
+          )}
+        </Flex>
+
+        <Form.Item name="timer">
+          <Input placeholder="Timer" type="number" />
         </Form.Item>
       </Form>
 
