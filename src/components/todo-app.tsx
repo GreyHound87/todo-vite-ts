@@ -10,10 +10,7 @@ function TodoApp() {
   const dispatch = useDispatch()
   const tasks: Task[] = useSelector((state: TasksState) => state.tasks)
 
-  const titleStyle = {
-    fontSize: '80px',
-    lineHeight: '1.2',
-    fontWeight: 400,
+  const titleStyle: React.CSSProperties = {
     color: '#cdcdcd',
     textAlign: 'center',
   }
@@ -45,11 +42,15 @@ function TodoApp() {
         <Form.Item label="New Task" name="task" rules={[{ required: true, message: 'Please enter a task!' }]}>
           <Input />
         </Form.Item>
-
-        <Form.Item>
-          <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
-            Add Task
-          </Button>
+        {window.innerWidth < 768 && (
+          <Form.Item>
+            <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
+              Add Task
+            </Button>
+          </Form.Item>
+        )}
+        <Form.Item label="Timer" name="timer">
+          <Input placeholder="Optional: Timer" type="number" />
         </Form.Item>
       </Form>
 
