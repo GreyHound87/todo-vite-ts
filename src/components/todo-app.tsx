@@ -1,6 +1,6 @@
 // src/components/TodoApp.tsx
-import { Typography, Form, Input, Button, Space, List, Checkbox, Flex } from 'antd'
-import { PlusOutlined } from '@ant-design/icons'
+import { Typography, Form, Input, Button, Space, List, Checkbox, Flex, Switch, Slider, InputNumber } from 'antd'
+import { PlusOutlined, FieldTimeOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Task, TasksState, addTask, toggleTask } from '../redux/store'
@@ -54,9 +54,17 @@ function TodoApp() {
           </Form.Item>
         </Flex>
 
-        <Form.Item name="timer">
-          <Input placeholder="Timer" type="number" />
-        </Form.Item>
+        <Flex justify="center" align="flex-start" gap="small">
+          <Form.Item name="timer">
+            <Switch size="small" checkedChildren={<FieldTimeOutlined />} unCheckedChildren={<FieldTimeOutlined />} />
+          </Form.Item>
+          <Form.Item name="timer">
+            <InputNumber min={0} max={24} />
+          </Form.Item>
+          <Form.Item name="timer">
+            <InputNumber min={0} max={60} />
+          </Form.Item>
+        </Flex>
       </Form>
 
       <List
