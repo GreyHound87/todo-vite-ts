@@ -39,21 +39,19 @@ function TodoApp() {
       </Typography.Title>
 
       <Form form={form} onFinish={onFinish} layout="horizontal" requiredMark={false}>
-        <Flex justify="space-between" align="center" gap="small">
+        <Flex justify="space-between" align="flex-end" gap="small">
           <Form.Item
             name="task"
             style={{ width: '100%' }}
             rules={[{ required: true, message: 'Please enter a task!' }]}
           >
-            <Input placeholder="Task" />
+            <Input.TextArea placeholder="Task" autoSize />
           </Form.Item>
-          {window.innerWidth < 768 && (
-            <Form.Item>
-              <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
-                Add Task
-              </Button>
-            </Form.Item>
-          )}
+          <Form.Item>
+            <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
+              Add Task
+            </Button>
+          </Form.Item>
         </Flex>
 
         <Form.Item name="timer">
