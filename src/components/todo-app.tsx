@@ -1,31 +1,18 @@
-// src/components/TodoApp.tsx
-import { Typography, Form, Input, Button, Space, List, Checkbox, Flex, Switch, Slider, InputNumber } from 'antd'
-import { PlusOutlined, FieldTimeOutlined } from '@ant-design/icons'
+// src/components/todo-app.tsx
+import { Typography, Space, List, Checkbox } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Task, TasksState, addTask, toggleTask } from '../redux/store'
+import { Task, TasksState, toggleTask } from '../redux/store'
+
+import TaskForm from './task-form.tsx'
 
 function TodoApp() {
-  const [form] = Form.useForm()
   const dispatch = useDispatch()
   const tasks: Task[] = useSelector((state: TasksState) => state.tasks)
 
   const titleStyle: React.CSSProperties = {
     color: '#cdcdcd',
     textAlign: 'center',
-  }
-
-  const onFinish = (values: { task: string }) => {
-    const newTask: Task = {
-      label: values.task,
-      created: new Date().toISOString(),
-      timer: 0,
-      id: Math.random().toString(),
-      isCompleted: false,
-      isEditing: false,
-    }
-    dispatch(addTask(newTask))
-    form.resetFields()
   }
 
   const onTaskToggle = (taskId: string) => {
@@ -38,7 +25,9 @@ function TodoApp() {
         TODO
       </Typography.Title>
 
-      <Form form={form} onFinish={onFinish} layout="horizontal" requiredMark={false}>
+      <TaskForm />
+
+      {/*       <Form form={form} onFinish={onFinish} layout="horizontal" requiredMark={false}>
         <Flex justify="space-between" align="flex-end" gap="small">
           <Form.Item
             name="task"
@@ -58,14 +47,15 @@ function TodoApp() {
           <Form.Item name="timer">
             <Switch size="small" checkedChildren={<FieldTimeOutlined />} unCheckedChildren={<FieldTimeOutlined />} />
           </Form.Item>
-          <Form.Item name="timer">
-            <InputNumber min={0} max={24} />
+
+          <Form.Item name="hours">
+            <InputNumber min={0} max={24} placeholder="Hours" />
           </Form.Item>
-          <Form.Item name="timer">
-            <InputNumber min={0} max={60} />
+          <Form.Item name="minutes">
+            <InputNumber min={0} max={60} placeholder="Minutes" />
           </Form.Item>
         </Flex>
-      </Form>
+      </Form> */}
 
       <List
         dataSource={tasks}
